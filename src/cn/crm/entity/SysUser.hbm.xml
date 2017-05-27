@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="SysUser" table="SYS_USER">
+		<id name="user_id" column="user_id">
+			<generator class="native">
+				<param name="sequence">user_sequence</param>
+			</generator>
+		</id>
+		
+		<property name="user_name"></property>
+		<property name="user_password"></property>
+		<property name="user_flag"></property>
+		<many-to-one name="sysRole" class="cn.crm.entity.SysRole" column="user_role_id" lazy="false" fetch="join"></many-to-one>
+		
+		<!-- 表示用户所属的多条拜访记录 -->
+		<set name="setUserVisits">
+			<key column="user_vid"></key>
+			<one-to-many class="cn.crm.entity.Visit"/>
+		</set>
+	</class>
+</hibernate-mapping>

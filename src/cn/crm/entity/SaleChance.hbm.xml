@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="SaleChance" table="SALE_CHANCE">
+		<id name="chan_no" column="chan_no">
+			<generator class="native">
+				<param name="sequence">saleChance_sequence</param>
+			</generator>
+		</id>
+		
+		<property name="chan_cust_name" type="string" length="100" not-null="true"></property>
+		<property name="chan_source" type="string" length="50"></property>
+		<property name="chan_rate" length="3" not-null="true"></property>
+		<property name="chan_title" type="string" length="100" not-null="true"></property>
+		<property name="chan_linkman" type="string" length="50"></property>
+		<property name="chan_telephone" type="string" length="50"></property>
+		<property name="chan_moblie" length="11"></property>
+		<property name="chan_description" type="text" length="1000" not-null="true"></property>
+		<property name="chan_create_by" type="string" length="50" not-null="true"></property>
+		<property name="chan_create_date" type="string" length="50" not-null="true"></property>
+		<property name="chan_due_to" type="string" length="50"></property>
+		<property name="chan_due_date" type="string" length="50"></property>
+		<property name="chan_status" type="integer" length="2" not-null="true"></property>
+		<property name="chan_flag" type="integer" length="2" not-null="true"></property>
+		
+		<set name="salePlans">
+			<key column="plan_chan_no"></key>
+			<one-to-many class="cn.crm.entity.SalePlan"/>
+		</set>
+	</class>
+</hibernate-mapping>

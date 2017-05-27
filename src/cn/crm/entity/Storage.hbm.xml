@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="Storage" table="STORAGE">
+		<id name="stor_no" column="stor_no">
+			<generator class="assigned"></generator>
+		</id>
+		
+		<property name="stor_storehouse"></property>
+		<property name="stor_location"></property>
+		<property name="stor_count"></property>
+		<property name="stor_remark"></property>
+		<property name="stor_flag"></property>
+		
+		<!-- 库存与商品的关系：库存为多方，商品为一方，单向关系-->
+		<many-to-one name="product" class="cn.crm.entity.Product" column="stor_prod_no" unique="true" lazy="false" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>

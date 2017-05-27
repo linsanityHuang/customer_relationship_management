@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="Product" table="product">
+		<id name="prod_no" column="prod_no">
+			<generator class="assigned"></generator>
+		</id>
+		
+		<property name="prod_name"></property>
+		<property name="prod_type"></property>
+		<property name="prod_garde_batch"></property>
+		<property name="prod_unit"></property>
+		<property name="prod_price"></property>
+		<property name="prod_remark"></property>
+		<property name="prod_flag"></property>
+		
+		<one-to-one name="storage" class="cn.crm.entity.Storage" property-ref="product"></one-to-one>
+	
+		<set name="orders" table="ORDERS_LINE">
+			<key column="line_prod_no"></key>
+			<many-to-many class="cn.crm.entity.Orders" column="line_order_no"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

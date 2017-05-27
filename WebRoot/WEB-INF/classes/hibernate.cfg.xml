@@ -1,0 +1,55 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 配置数据库信息 -->
+		<!-- <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:jbit</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.username">crm</property>
+		<property name="hibernate.connection.password">crm</property> -->
+		
+		<!-- 其他配置 -->
+		<!-- 显示生成的SQL语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		
+		<!-- 
+			create: 如果存在则先删除，再创建
+			create-drop: 初始化时创建表，SessionFactory执行close()时删除表
+			update： 如果表不存在就创建，不一样就更新，一样就什么都不做
+			validate: 验证表结构是否一致，如果不一致，就抛异常。
+		-->
+		<property name="hbm2ddl.auto">update</property>
+		
+		<!-- 必须添加这个配置且值为none，否则无法得到会话工厂 -->
+		<!-- javax.persistence.validation.mode默认情况下是auto的，就是说如果不设置的话它是会自动去你的classpath下面找一个bean-validation**包，但是找不到，所以beanvalitionFactory错误。 -->
+		<property name="javax.persistence.validation.mode">none</property>
+		
+
+		<!-- 导入映射文件 -->
+		<mapping resource="cn/crm/entity/BasicDictionary.hbm.xml"/>
+		<mapping resource="cn/crm/entity/CommunicateRecord.hbm.xml"/>
+		<mapping resource="cn/crm/entity/CustLinkMan.hbm.xml"/>
+		<mapping resource="cn/crm/entity/CustLost.hbm.xml"/>
+		<mapping resource="cn/crm/entity/Customer.hbm.xml"/>
+		<mapping resource="cn/crm/entity/Orders.hbm.xml"/>
+		<mapping resource="cn/crm/entity/OrdersLine.hbm.xml"/>
+		
+		<mapping resource="cn/crm/entity/Product.hbm.xml"/>
+		<mapping resource="cn/crm/entity/SaleChance.hbm.xml"/>
+		<mapping resource="cn/crm/entity/SalePlan.hbm.xml"/>
+		<mapping resource="cn/crm/entity/ServiceManager.hbm.xml"/>
+		
+		<mapping resource="cn/crm/entity/Storage.hbm.xml"/>
+		<mapping resource="cn/crm/entity/SysRole.hbm.xml"/>
+		<mapping resource="cn/crm/entity/SysUser.hbm.xml"/>
+		<mapping resource="cn/crm/entity/SysRight.hbm.xml"/>
+
+		
+		<mapping resource="cn/crm/entity/Visit.hbm.xml"/>
+		
+	</session-factory>
+</hibernate-configuration>

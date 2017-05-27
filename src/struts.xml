@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+	<!-- 设置上传文件的大小 -->
+	<constant name="struts.multipart.maxSize" value="209715200"></constant>
+	<package name="demo1" extends="struts-default" namespace="/">
+		
+		<action name="salePlan_*" class="salePlanAction" method="{1}">
+			<result name="showSalePlan">/jsp/salePlan/showSalePlan.jsp</result>
+			
+			<result name="multiQuery">/jsp/salePlan/queryResult.jsp</result>
+			
+			<result name="makePlan">/jsp/salePlan/makePlan.jsp</result>
+			
+			<result name="addPlan_Item" type="redirectAction">salePlan_showSalePlan</result>
+			
+			<result name="deletePlan_Item" type="redirectAction">salePlan_showSalePlan</result>
+			
+			<result name="executePlan">/jsp/salePlan/executePlan.jsp</result>
+			
+			<result name="writePlanResult" type="redirectAction">salePlan_showSalePlan</result>
+			
+			<result name="showSaleChanceDetails">/jsp/salePlan/showSaleChanceDetails.jsp</result>
+			
+			<result name="developSuccess" type="redirectAction">salePlan_showSalePlan</result>
+			
+			<result name="developFailed" type="redirectAction">salePlan_showSalePlan</result>
+		</action>
+		
+		<action name="storage_*" class="storageAction" method="{1}">
+			<result name="showStorage">/jsp/storage/storage.jsp</result>
+			
+			<result name="multiQuery">/jsp/storage/queryResult.jsp</result>
+		</action>
+		
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="showProduct">/jsp/product/product.jsp</result>
+			
+			<result name="multiQuery">/jsp/product/queryResult.jsp</result>
+		</action>
+	
+		<action name="dictionary_*" class="dictionaryAction" method="{1}">
+			<!-- 客户等级 -->
+			<result name="showCustLevel">/jsp/basicData/custLevel/cust_level.jsp</result>
+			
+			<result name="editLevel">/jsp/basicData/custLevel/editLevel.jsp</result>
+			
+			<result name="deleteLevel" type="redirectAction">dictionary_showCustLevel</result>
+			
+			<result name="saveLevel" type="redirectAction">dictionary_showCustLevel</result>
+			
+			<result name="addCustLevel">/jsp/basicData/custLevel/addCustLevel.jsp</result>
+			
+			<result name="add2db" type="redirectAction">dictionary_showCustLevel</result>
+			
+			<!-- 服务类型 -->
+			<result name="showServiceType">/jsp/basicData/custServiceType/custServiceType.jsp</result>
+			
+			<result name="editServiceType">/jsp/basicData/custServiceType/editServiceType.jsp</result>
+			
+			<result name="saveServiceType" type="redirectAction">dictionary_showServiceType</result>
+			
+			<result name="deleteServiceType" type="redirectAction">dictionary_showServiceType</result>
+			
+			<result name="addServiceType">/jsp/basicData/custServiceType/addServiceType.jsp</result>
+			
+			<result name="addServiceType2db" type="redirectAction">dictionary_showServiceType</result>
+			
+			<!-- 客户地区 -->
+			<result name="showCustRegion">/jsp/basicData/custRegion/custRegion.jsp</result>
+			
+			<result name="editCustRegion">/jsp/basicData/custRegion/editCustRegion.jsp</result>
+			
+			<result name="saveCustRegion" type="redirectAction">dictionary_showCustRegion</result>
+			
+			<result name="deleteCustRegion" type="redirectAction">dictionary_showCustRegion</result>
+			
+			<result name="addCustRegion">/jsp/basicData/custRegion/addCustRegion.jsp</result>
+			
+			<result name="addCustRegion2db" type="redirectAction">dictionary_showCustRegion</result>
+		</action>
+	
+		<action name="user_*" class="sysUserAction" method="{1}">
+			<result name="input">/jsp/error.jsp</result>
+			
+			<!-- 登录 -->
+			<result name="success">/menu.jsp</result>
+			<result name="failed">/login.jsp</result>
+			
+			<!-- 退出系统 -->
+			<result name="loginOut">/login.jsp</result>
+			
+			<!-- 分页显示用户信息 -->
+			<result name="listpage">/jsp/user/user_management.jsp</result>
+			
+			<!-- 跳转至编辑页面 -->
+			<result name="edit">/jsp/user/edit.jsp</result>
+			
+			<!-- 保存之后跳往分页显示页面 -->
+			<result name="save" type="redirectAction">user_listpage</result>
+			
+			<!-- 跳转至新建用户信息的页面 -->
+			<result name="add">/jsp/user/add.jsp</result>
+			
+			<!-- 新建之后跳转至分页显示页面 -->
+			<result name="add2db" type="redirectAction">user_listpage</result>
+			
+			<!-- 删除之后跳往分页显示页面 -->
+			<result name="delete" type="redirectAction">user_listpage</result>
+			
+			<!-- 多条件查询后跳往分页显示页面 -->
+			<result name="multiQuery">/jsp/user/queryResult.jsp</result>
+		</action>
+		
+		<!-- 角色 -->
+		<action name="role_*" class="sysRoleAction" method="{1}">
+			<result name="listpage">/jsp/role/user_management.jsp</result>
+			
+			<!-- 跳往编辑页面 -->
+			<result name="edit">/jsp/role/edit.jsp</result>
+		</action>
+		
+		<!-- 客户 -->
+		<action name="customer_*" class="customerAction" method="{1}">
+			<!-- 到添加页面 -->
+			<result name="toAddPage">/jsp/customer/add.jsp</result>
+			<!-- 添加之后 -->
+			<result name="add" type="redirectAction">customer_list</result>
+		
+			<!-- 列表页面 -->
+			<result name="list">/jsp/customer/list.jsp</result>
+			
+			<!-- 删除之后 -->
+			<result name="delete" type="redirectAction">customer_list</result>
+		
+			<!-- 修改-到修改页面 -->
+			<result name="showCustomer">/jsp/customer/edit.jsp</result>
+		
+			<!-- 修改之后 -->
+			<result name="update" type="redirectAction">customer_showCustomer</result>
+		
+			<!-- 分页之后要跳转的页面 -->
+			<result name="listpage">/jsp/customer/listpage.jsp</result>
+		
+			<!-- 条件查询 -->
+			<result name="listcondition">/jsp/customer/list.jsp</result>
+		
+			<!-- 到查询页面 -->
+			<result name="toSelectCustomerPage">/jsp/select/select.jsp</result>
+			
+			<result name="moreCondition">/jsp/customer/list.jsp</result>
+			
+			<!-- 根据经理统计 -->
+			<result name="countManager">/jsp/customer/listManager.jsp</result>
+		
+			<!-- 根据级别统计 -->
+			<result name="countLevel">/jsp/customer/listLevel.jsp</result>
+		</action>
+		
+		<!-- 联系人 -->
+		<action name="linkMan_*" class="linkManAction" method="{1}">
+			<!-- 到添加的页面 -->
+			<result name="toAddPage">/jsp/linkMan/add.jsp</result>
+		
+			<result name="addLinkMan" type="redirectAction">linkMan_list</result>
+		
+			<!-- 配置input结果返回页面，如上传文件大小超过2M限制 -->
+			<result name="input">/jsp/error.jsp</result>
+		
+			<!-- 联系人列表 -->
+			<result name="list">/jsp/linkMan/list.jsp</result>
+		
+			<!-- 到修改联系人信息的页面 -->
+			<result name="showLinkMan">/jsp/linkMan/edit.jsp</result>
+		
+			<result name="updateCustLinkMan" type="redirectAction">linkMan_list</result>
+		
+			<!-- 到查询联系人信息的页面 -->
+			<result name="toSelectPage">/jsp/select/linkman.jsp</result>
+		
+			<result name="moreCondition">/jsp/linkMan/list.jsp</result>
+		</action>
+		
+		<action name="visit_*" class="visitAction" method="{1}">
+			<result name="toAddPage">/jsp/visit/add.jsp</result>
+			<result name="addVisit">/jsp/visit/list.jsp</result>
+		
+			<!-- 列表页面 -->
+			<result name="list">/jsp/visit/list.jsp</result>
+		</action>
+		
+		<!-- 销售机会 -->
+		<action name="saleChance_*" class="saleChanceAction" method="{1}">
+		
+			<!-- 跳往分页显示页面 -->
+			<result name="listpage">/jsp/saleChance/listpage.jsp</result>
+			
+			<!-- 删除成功之后跳往分页显示页面 -->
+			<result name="deleteSuccsess" type="redirectAction">saleChance_listpage</result>
+			
+			<!-- 删除失败之后跳往操作失败页面 -->
+			<result name="deleteFailed">/jsp/saleChance/deleteFailed.jsp</result>
+		
+			<!-- 修改之前，先跳往该记录的详情显示页面 -->
+			<result name="showSaleChance">/jsp/saleChance/edit.jsp</result>
+			
+			<!-- 修改之后，保存到数据库之后跳转的页面 -->
+			<result name="update">/jsp/saleChance/listpage.jsp</result>
+			
+			<result name="input">/jsp/error.jsp</result>
+			
+			<!-- 跳转至新建页面 -->
+			<result name="toAddPage">/jsp/saleChance/add.jsp</result>
+			
+			<!-- 新建完毕后，跳转至分页显示页面 -->
+			<result name="add" type="redirectAction">saleChance_listpage</result>
+			
+			<!-- 跳转至指派页面 -->
+			<result name="due_to_manager">/jsp/saleChance/due_to_manager.jsp</result>
+			
+			<!-- 指派完毕后跳转至分页显示页面 -->
+			<result name="due_to_manager_update" type="redirectAction">saleChance_listpage</result>
+			
+			<!-- 多重查询 -->
+			<result name="multiQuery">/jsp/saleChance/multiQueryResult.jsp</result>
+		</action>
+	</package>
+</struts>

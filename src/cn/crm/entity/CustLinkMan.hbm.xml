@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="CustLinkMan" table="cust_linkman">
+		
+		<!-- 
+			CREATE SEQUENCE cust_linkman_sequence
+	        INCREMENT BY 1
+	        NOMAXVALUE
+	        NOCYCLE
+	        CACHE 10; 
+        -->
+		<id name="link_no" column="link_no">
+			<generator class="native">
+				<param name="sequence">cust_linkman_sequence</param>
+			</generator>
+		</id>
+		
+		<!--
+			  link_no        VARCHAR2(20) not null,
+			  link_cust_no   VARCHAR2(20) not null,
+			  link_name      VARCHAR2(50) not null,
+			  link_sex       NUMBER(2),
+			  link_position  VARCHAR2(50),
+			  link_telephone VARCHAR2(50),
+			  link_mobile    NUMBER(11),
+			  link_remark    VARCHAR2(400),
+			  link_flag      NUMBER(2) not null
+		-->
+		<property name="link_name" type="string" length="50" not-null="true"></property>
+		<property name="link_sex" type="int" length="2"></property>
+		<property name="link_position" type="string" length="50"></property>
+		<property name="link_telephone" type="string" length="50"></property>
+		<property name="link_mobile" type="int" length="11"></property>
+		<property name="link_remark" type="string" length="400"></property>
+		<property name="link_flag" type="int" length="2" not-null="true"></property>
+		
+		<!-- 联系人所属的客户 -->
+		<many-to-one name="link_cust_no" class="cn.crm.entity.Customer" column="link_cust_no" lazy="false" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>

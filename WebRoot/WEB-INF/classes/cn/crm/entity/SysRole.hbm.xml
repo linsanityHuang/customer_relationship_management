@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="SysRole" table="SYS_ROLE">
+		<id name="role_id" column="role_id">
+			<generator class="native">
+				<param name="sequence">role_sequence</param>
+			</generator>
+		</id>
+		
+		<property name="role_name"></property>
+		<property name="role_desc"></property>
+		<property name="role_flag"></property>
+		
+		<!-- 一个角色可以拥有多个权限 -->
+		<set name="sysRights" table="SYS_ROLE_RIGHT">
+			<key column="rf_role_id"></key>
+			<many-to-many class="cn.crm.entity.SysRight" column="rf_right_code"></many-to-many>
+		</set>
+		
+		<!-- 一个角色可以赋给多个用户 -->
+		<set name="sysUsers">
+			<key column="user_role_id"></key>
+			<one-to-many class="cn.crm.entity.SysUser"/>
+		</set>
+	</class>
+</hibernate-mapping>

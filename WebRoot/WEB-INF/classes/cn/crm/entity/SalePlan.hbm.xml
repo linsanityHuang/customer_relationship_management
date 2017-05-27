@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="SalePlan" table="SALE_PLAN">
+		<id name="plan_no" column="plan_no">
+			<generator class="native">
+				<param name="sequence">saleplan_sequence</param>
+			</generator>
+		</id>
+		<property name="plan_date" type="string" length="50" not-null="true"></property>
+		<property name="plan_item" type="string" length="500" not-null="true"></property>
+		<property name="plan_result" type="string" length="500"></property>
+		<property name="plan_flag" type="integer" length="2" not-null="true"></property>
+		
+		<many-to-one name="saleChance" class="cn.crm.entity.SaleChance" column="plan_chan_no" not-null="true" lazy="proxy"/>
+	</class>
+</hibernate-mapping>

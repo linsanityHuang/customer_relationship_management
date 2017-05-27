@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="CommunicateRecord" table="communicate_record">
+		<id name="comm_no" column="comm_no">
+			<generator class="assigned"></generator>
+		</id>
+		
+		<property name="comm_date"></property>
+		<property name="comm_address"></property>
+		<property name="comm_title"></property>
+		<property name="comm_detail"></property>
+		<property name="comm_remark"></property>
+		<property name="comm_flag"></property>
+		<many-to-one name="comm_cust_no" class="cn.crm.entity.Customer" column="comm_cust_no" lazy="false" fetch="join"></many-to-one>
+		
+	</class>
+</hibernate-mapping>

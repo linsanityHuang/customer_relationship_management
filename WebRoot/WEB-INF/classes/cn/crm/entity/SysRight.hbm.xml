@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="SysRight" table="SYS_RIGHT">
+		<id name="right_code" column="right_code">
+			<generator class="assigned"></generator>
+		</id>
+		<many-to-one name="parentRight" column="right_parent_code" class="cn.crm.entity.SysRight" lazy="false" fetch="join"></many-to-one>
+		<property name="right_type"></property>
+		<property name="right_text"></property>
+		<property name="right_url"></property>
+		<property name="right_tip"></property>
+		
+		<set name="sysRoles" table="SYS_ROLE_RIGHT">
+			<key column="rf_right_code"></key>
+			<many-to-many class="cn.crm.entity.SysRole" column="rf_role_id"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="OrdersLine" table="ORDERS_LINE">
+		<id name="line_no" column="line_no">
+			<generator class="assigned"></generator>
+		</id>
+
+		<property name="line_count" not-null="true"></property>
+		<property name="line_unit" not-null="true"></property>
+		<property name="line_flag" not-null="true"></property>
+	
+		
+	</class>
+</hibernate-mapping>

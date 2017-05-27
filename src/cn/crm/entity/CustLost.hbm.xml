@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+
+<hibernate-mapping package="cn.crm.entity">
+	<class name="CustLost" table="cust_lost">
+		<id name="lost_no" column="lost_no">
+			<generator class="assigned"></generator>
+		</id>
+		
+		<property name="lost_manager_name"></property>
+		<property name="lost_last_order_date"></property>
+		<property name="lost_last_date"></property>
+		<property name="lost_delay"></property>
+		<property name="lost_reson"></property>
+		<property name="lost_status"></property>
+		<many-to-one name="lost_cust_no" class="cn.crm.entity.Customer" column="lost_cust_no" lazy="false" fetch="join"></many-to-one>
+		
+	</class>
+</hibernate-mapping>
