@@ -9,7 +9,7 @@
 <title>分页显示客户列表</title>
 </head>
 <body>
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>客户姓名</td>
 			<td>客户所在地区</td>

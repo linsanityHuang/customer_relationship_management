@@ -45,5 +45,9 @@
 	<import resource="classpath:product.xml"/>
 	<import resource="classpath:storage.xml"/>
 	<import resource="classpath:salePlan.xml"/>
+	<import resource="classpath:communicateRecord.xml"/>
+	<import resource="classpath:custLost.xml"/>
+	<import resource="classpath:serviceManager.xml"/>
+	<import resource="classpath:statisticalForm.xml"/>
 	
 </beans>

@@ -10,7 +10,7 @@
 <form action="${pageContext.request.contextPath}/dictionary_saveCustRegion.action" method="post">
 	<input type="submit" value="保存">
 	<input type="hidden" name="basi_no" value="${dictionary.basi_no }">
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>值</td>
 			<td>

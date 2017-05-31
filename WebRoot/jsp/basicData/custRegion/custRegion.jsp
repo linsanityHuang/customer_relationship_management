@@ -27,7 +27,7 @@
 	<a></a>
 	<a href="${pageContext.request.contextPath}/dictionary_addCustRegion.action">新建</a>
 	<input type="submit" value="查询">
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>编号</td>
 			<td><input type="text" name="basi_value"></td>
@@ -37,7 +37,7 @@
 	</table>
 </form>
 	<!-- 该表格主要用来显示用户信息 -->
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<thead>
 			<tr>
 				<td>编号</td>

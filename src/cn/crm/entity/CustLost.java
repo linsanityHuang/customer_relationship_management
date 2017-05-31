@@ -73,11 +73,4 @@ public class CustLost {
 	public void setLost_status(Integer lost_status) {
 		this.lost_status = lost_status;
 	}
-
-	@Override
-	public String toString() {
-		return "CustLost [lost_no=" + lost_no + ", lost_manager_name=" + lost_manager_name + ", lost_last_order_date=" + lost_last_order_date + ", lost_last_date="
-				+ lost_last_date + "]";
-	}
-
 }

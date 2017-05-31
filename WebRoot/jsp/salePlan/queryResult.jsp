@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>查询结果</h1>
-<table border="1px" cellspacing="2" cellpadding="10">
+<table border="1px" cellspacing="1" cellpadding="10">
 	<thead style="background: blue;">
 		<tr style="font-weight: bolder;">
 			<td>编号</td>

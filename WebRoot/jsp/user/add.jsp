@@ -12,7 +12,7 @@
 	<form action="${pageContext.request.contextPath}/user_add2db.action" method="post">
 		<input type="submit" value="保存">
 		<input type="hidden" name="user_flag" value="1">
-		<table>
+		<table border="1px" cellpadding="10" cellspacing="1">
 			<tr>
 				<td>用户名</td>
 				<td>

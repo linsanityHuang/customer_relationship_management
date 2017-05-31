@@ -1,11 +1,15 @@
 package cn.crm.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.crm.dao.CustomerDAO;
+import cn.crm.entity.CommunicateRecord;
+import cn.crm.entity.CustLinkMan;
 import cn.crm.entity.Customer;
+import cn.crm.entity.Orders;
 import cn.crm.entity.PageBean;
 
 //事务注解
@@ -40,6 +44,9 @@ public class CustomerService {
 
 	// 封装分页数据到pagebean对象里面
 	public PageBean listpage(Integer currentPage) {
+		if (currentPage == null) {
+			currentPage = 1;
+		}
 		// 创建PageBean对象
 		PageBean pageBean = new PageBean();
 		// 当前页
@@ -87,5 +94,66 @@ public class CustomerService {
 
 	public List findCountLevel() {
 		return customerDAO.findCountLevel();
+	}
+
+	public PageBean multiQuery(Customer customer, Integer currentPage) {
+
+		if (currentPage == null) {
+			currentPage = 1;
+		}
+		PageBean pageBean = new PageBean();
+		pageBean.setCurrentPage(currentPage);
+		
+		int totalCount = customerDAO.findMultiQueryCount(customer);
+		pageBean.setTotalCount(totalCount);
+		
+		int pageSize = 2;
+		pageBean.setPageSize(pageSize);
+		
+		int totalPage = 0;
+		if (totalCount % pageSize == 0) {
+			totalPage = totalCount / pageSize;
+		} else {
+			totalPage = totalCount / pageSize + 1;
+		}
+		pageBean.setTotalPage(totalPage);
+		
+		int begin = (currentPage - 1) * pageSize;
+		List<Customer> list = customerDAO.multiQuery(customer, begin, pageSize);
+		pageBean.setList(list);
+		
+		return pageBean;
+	}
+
+	public CustLinkMan findLinkMans(String cust_no, String link_no) {
+		return customerDAO.findLinkMans(cust_no, link_no);
+	}
+
+	public void deleteLinkMan(String cust_no, String link_no) {
+		customerDAO.deleteLinkMan(cust_no, link_no);
+	}
+
+	public CommunicateRecord findCommunicateRecord(String cust_no, String comm_no) {
+		return customerDAO.findCommunicateRecord(cust_no, comm_no);
+	}
+
+	public void deleteCommunicateRecord(String cust_no, String comm_no) {
+		customerDAO.deleteCommunicateRecord(cust_no, comm_no);
+	}
+
+	public Orders findOrder(String cust_no, Integer orde_no) {
+		return customerDAO.findOrder(cust_no, orde_no);
+	}
+
+	public Double getTotalMoney(String cust_no, Integer orde_no) {
+		return customerDAO.getTotalMoney(cust_no, orde_no);
+	}
+
+	public Map<String, String> getCustomers() {
+		return customerDAO.getCustomers();
+	}
+
+	public Map<String, Double> getCustTotalMoney() {
+		return customerDAO.getCustTotalMoney();
 	}
 }

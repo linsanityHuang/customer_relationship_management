@@ -12,7 +12,7 @@
 <form action="${pageContext.request.contextPath }/product_multiQuery.action" method="post">
 	<a href="#">关于</a>
 	<input type="submit" value="查询">
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>名称</td>
 			<td><input type="text" name="prod_name"></td>
@@ -24,7 +24,7 @@
 	</table>
 </form>
 
-<table>
+<table border="1px" cellpadding="10" cellspacing="1">
 	<thead>
 		<tr>
 			<td>编号</td>

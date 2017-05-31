@@ -32,39 +32,39 @@
 			<a href="${pageContext.request.contextPath }/customer_listpage.action?currentPage=1">客户信息管理</a>
 		</li>
 		<li>
-			<a href="">客户流失管理</a>
+			<a href="${pageContext.request.contextPath }/custLost_listpage.action?currentPage=1">客户流失管理</a>
 		</li>
 	</ul>
 	
 	<h3>服务管理</h3>
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath }/saleChance_listpage.action?currentPage=1">服务创建</a>
+			<a href="${pageContext.request.contextPath }/serviceManager_createService.action">服务创建</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">服务分配</a>
+			<a href="${pageContext.request.contextPath }/serviceManager_due_to_service.action?currentPage=1">服务分配</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">服务处理</a>
+			<a href="${pageContext.request.contextPath }/serviceManager_handleService.action?currentPage=1">服务处理</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">服务反馈</a>
+			<a href="${pageContext.request.contextPath }/serviceManager_feedBackService.action?currentPage=1">服务反馈</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">服务归档</a>
+			<a href="${pageContext.request.contextPath }/serviceManager_fileService.action?currentPage=1">服务归档</a>
 		</li>
 	</ul>
 	
 	<h3>统计报表</h3>
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath }/saleChance_listpage.action?currentPage=1">客户贡献分析</a>
+			<a href="${pageContext.request.contextPath }/statisticalForm_contributionAnalysis.action?currentPage=1">客户贡献分析</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">客户构成分析</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">客户服务分析</a>
+			<a href="${pageContext.request.contextPath }/statisticalForm_serviceAnalysis.action?currentPage=1">客户服务分析</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">客户流失分析</a>

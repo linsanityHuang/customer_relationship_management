@@ -12,7 +12,7 @@
 <form action="${pageContext.request.contextPath }/storage_multiQuery.action" method="post">
 	<a href="#">关于</a>
 	<input type="submit" value="查询">
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>产品</td>
 			<!-- 如何根据产品名称查询出向关联的库存信息 -->

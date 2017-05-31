@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 public class StorageAction extends ActionSupport implements ModelDriven<Storage>{
-
+	
 	private Storage storage = new Storage();
 	public Storage getModel() {
 		return storage;

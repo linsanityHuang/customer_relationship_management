@@ -16,7 +16,7 @@
 	<input type="button" value="关于">
 	<!-- 点击“查询”按钮，可以根据客户名称、负责人、概要进行筛选查询。 -->
 	<input type="submit" value="查询">
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>客户名称</td>
 			<td>

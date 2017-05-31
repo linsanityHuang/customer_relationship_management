@@ -1,6 +1,5 @@
 package cn.crm.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -21,7 +20,7 @@ public class LinkManDAOImpl extends HibernateDaoSupport implements LinkManDAO {
 	@SuppressWarnings("unchecked")
 	public List<CustLinkMan> list() {
 		
-		return (List<CustLinkMan>) this.getHibernateTemplate().find("from CustLinkMan");
+		return (List<CustLinkMan>) this.getHibernateTemplate().find("from CustLinkMan where link_flag = 1");
 	}
 
 	//根据id查询联系人

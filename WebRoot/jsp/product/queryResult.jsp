@@ -8,7 +8,7 @@
 <title>查询结果页面</title>
 </head>
 <body>
-<table>
+<table border="1px" cellpadding="10" cellspacing="1">
 	<thead>
 		<tr>
 			<td>编号</td>

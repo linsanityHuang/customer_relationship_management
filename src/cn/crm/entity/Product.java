@@ -12,6 +12,14 @@ public class Product {
 	private String prod_price;
 	private String prod_remark;
 	private Integer prod_flag;
+	
+	private Set<OrdersLine> ordersLines = new HashSet<OrdersLine>();
+	public Set<OrdersLine> getOrdersLines() {
+		return ordersLines;
+	}
+	public void setOrdersLines(Set<OrdersLine> ordersLines) {
+		this.ordersLines = ordersLines;
+	}
 
 	/**
 	 * 关联Storage，调用该商品的库存信息
@@ -19,7 +27,7 @@ public class Product {
 	private Storage storage;
 	
 	//一种商品可以在多个订单中存在
-	private Set<Orders> orders = new HashSet<Orders>();
+	/*private Set<Orders> orders = new HashSet<Orders>();
 	
 	public Set<Orders> getOrders() {
 		return orders;
@@ -27,7 +35,7 @@ public class Product {
 
 	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
-	}
+	}*/
 
 	public Storage getStorage() {
 		return storage;

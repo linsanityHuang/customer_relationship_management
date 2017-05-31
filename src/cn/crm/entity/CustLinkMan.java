@@ -1,5 +1,7 @@
 package cn.crm.entity;
 
+import java.math.BigDecimal;
+
 public class CustLinkMan {
 	private String link_no;
 	
@@ -10,7 +12,7 @@ public class CustLinkMan {
 	private Integer link_sex;
 	private String link_position;
 	private String link_telephone;
-	private Integer link_mobile;
+	private BigDecimal link_mobile;
 	private String link_remark;
 	private Integer link_flag;
 
@@ -62,11 +64,11 @@ public class CustLinkMan {
 		this.link_telephone = link_telephone;
 	}
 
-	public Integer getLink_mobile() {
+	public BigDecimal getLink_mobile() {
 		return link_mobile;
 	}
 
-	public void setLink_mobile(Integer link_mobile) {
+	public void setLink_mobile(BigDecimal link_mobile) {
 		this.link_mobile = link_mobile;
 	}
 

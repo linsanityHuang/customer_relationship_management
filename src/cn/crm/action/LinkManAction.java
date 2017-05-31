@@ -3,6 +3,7 @@ package cn.crm.action;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -165,4 +166,30 @@ public class LinkManAction extends ActionSupport implements ModelDriven<CustLink
 		return  "moreCondition";
 	}
 	
+	//保存更新之后的联系人信息
+	public String updateLinkMan() {
+		
+		linkManService.updateLink(custLinkMan);
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		
+		
+		Customer customer = custLinkMan.getLink_cust_no();
+		
+		Set<CustLinkMan> linkMans = customer.getCustLinkMans();
+		
+		request.setAttribute("customer", customer);
+		request.setAttribute("linkMans", linkMans);
+		
+		
+		return "updateLinkMan";
+	}
+	
+	//添加联系人到数据库
+	public String addLinkMan2db() {
+		linkManService.addLinkMan(custLinkMan);
+		
+		return "addLinkMan2db";
+	}
 }

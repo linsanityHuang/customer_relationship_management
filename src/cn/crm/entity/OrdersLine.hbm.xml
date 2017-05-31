@@ -13,7 +13,9 @@
 		<property name="line_count" not-null="true"></property>
 		<property name="line_unit" not-null="true"></property>
 		<property name="line_flag" not-null="true"></property>
-	
 		
+		<many-to-one name="product" class="Product" column="line_prod_no" lazy="false"></many-to-one>
+		
+		<many-to-one name="orders" class="Orders" column="line_orde_no"></many-to-one>
 	</class>
 </hibernate-mapping>

@@ -16,7 +16,7 @@
 		
 		<input type="submit" value="查询">
 		
-		<table border="1px">
+		<table border="1px" cellpadding="10" cellspacing="1">
 			<tr>
 				<td>客户名称</td>
 				<td>
@@ -29,7 +29,7 @@
 			</tr>
 		</table>
 	</form>
-	<table border="1px">
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<thead>
 			<tr>
 				<td>编号</td>

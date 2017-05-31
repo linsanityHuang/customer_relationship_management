@@ -31,11 +31,12 @@
 		<property name="cust_national_tax_no"></property>
 		<property name="cust_flag"></property>
 		
-		<set name="orders" lazy="true">
+		<!-- inverse为true时，表示本方放弃维护关联关系 -->
+		<set name="orders" lazy="true" inverse="false">
 			<key column="orde_cust_no"></key>
 			<one-to-many class="cn.crm.entity.Orders"/>
 		</set>
-		<set name="communicateRecords" lazy="true">
+		<set name="communicateRecords" lazy="true" inverse="true">
 			<key column="comm_cust_no"></key>
 			<one-to-many class="cn.crm.entity.CommunicateRecord"/>
 		</set>
@@ -43,21 +44,21 @@
 			表示客户的所有联系人
 			inverse:一般由多方维护关联关系，所以在一方中该属性设置为true
 		-->
-		<set name="custLinkMans" inverse="true" cascade="delete">
+		<set name="custLinkMans" inverse="false">
 			<key column="link_cust_no"></key>
 			<one-to-many class="cn.crm.entity.CustLinkMan"/>
 		</set>
-		<set name="custLosts" lazy="true">
+		<set name="custLosts" lazy="true" inverse="true">
 			<key column="lost_cust_no"></key>
 			<one-to-many class="cn.crm.entity.CustLost"/>
 		</set>
-		<set name="serviceManagers" lazy="true">
+		<set name="serviceManagers" lazy="true" inverse="true">
 			<key column="serv_cust_no"></key>
 			<one-to-many class="cn.crm.entity.ServiceManager"/>
 		</set>
 		
 		<!-- 表示所有拜访记录 -->
-		<set name="setCusVisits">
+		<set name="setCusVisits" inverse="true">
 			<key column="cust_vid"></key>
 			<one-to-many class="cn.crm.entity.Visit"/>
 		</set>

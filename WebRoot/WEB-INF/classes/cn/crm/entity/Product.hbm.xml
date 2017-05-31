@@ -20,9 +20,14 @@
 		
 		<one-to-one name="storage" class="cn.crm.entity.Storage" property-ref="product"></one-to-one>
 	
-		<set name="orders" table="ORDERS_LINE">
+		<!-- <set name="orders" table="ORDERS_LINE">
 			<key column="line_prod_no"></key>
 			<many-to-many class="cn.crm.entity.Orders" column="line_order_no"></many-to-many>
+		</set> -->
+		
+		<set name="ordersLines" table="ORDERS_LINE" inverse="true">
+			<key column="line_prod_no"></key>
+			<one-to-many class="OrdersLine"/>
 		</set>
 	</class>
 </hibernate-mapping>

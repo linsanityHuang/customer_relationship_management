@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/customer_moreCondition.action" method="post">
-		<table>
+		<table border="1px" cellpadding="10" cellspacing="1">
 			<tr>
 				<td>客户姓名</td>
 				<td colspan="3">

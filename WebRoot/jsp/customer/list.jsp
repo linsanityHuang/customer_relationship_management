@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/customer_listcondition.action" method="post">
-		<table>
+		<table border="1px" cellpadding="10" cellspacing="1">
 			<tr>
 				<td>客户姓名：<input type="text" name="cust_name"></td>
 				<td><input type="submit" name="filter" value="筛选"></td>
@@ -18,7 +18,7 @@
 		</table>
 	</form>
 	<!-- 使用EL表达式获取域对象中的数据 -->
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>客户姓名</td>
 			<td>客户所在地区</td>

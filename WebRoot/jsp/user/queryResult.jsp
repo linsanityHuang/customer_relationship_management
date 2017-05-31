@@ -9,7 +9,7 @@
 </head>
 <body>
 	<!-- 查询之后显示的用户信息 -->
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<thead>
 			<tr>
 				<td>编号</td>

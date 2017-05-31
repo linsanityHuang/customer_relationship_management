@@ -178,4 +178,8 @@ public class DictionaryService {
 	public Map<String, String> getSatisfies() {
 		return dictionaryDAO.getSatisfies();
 	}
+
+	public Map<String, String> getLostStatus() {
+		return dictionaryDAO.getLostStatus();
+	}
 }

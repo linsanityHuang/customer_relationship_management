@@ -2,12 +2,17 @@ package cn.crm.action;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 
+import cn.crm.entity.CommunicateRecord;
+import cn.crm.entity.CustLinkMan;
 import cn.crm.entity.Customer;
+import cn.crm.entity.Orders;
+import cn.crm.entity.OrdersLine;
 import cn.crm.entity.PageBean;
 import cn.crm.service.CustomerService;
 import cn.crm.service.DictionaryService;
@@ -74,7 +79,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		this.currentPage = currentPage;
 	}
 
-	//分页的方法
+	//第一 分页的方法
 	public String listpage(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		
@@ -129,7 +134,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 
 
 	//4 删除的方法
-	public String delete(){
+	public String deleteCustomer(){
 		//使用模型驱动获取表单提交的cust_no值，只要表单提交过来的数据的属性名如cust_no与实体类中的属性名一致，就可以通过模型驱动获取数据
 		String cust_no = customer.getCust_no();
 		
@@ -142,10 +147,10 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 			//调用方法删除(执行逻辑删除，将客户标识cust_flag设置为0)
 			customerService.delete(customer);
 		}
-		return "delete";
+		return "deleteCustomer";
 	}
 	
-	//5 修改的方法 - 先根据id查询到记录信息
+	//第二 修改的方法 - 先根据id查询到记录信息
 	public String showCustomer(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		
@@ -170,16 +175,16 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		return "showCustomer";
 	}
 	
-	//6 修改的方法 - 修改之后保存的方法
+	//第三 修改的方法 - 修改之后保存的方法
 	public String update(){
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		
 		boolean flag = customerService.update(customer);
 			
-		Customer customer = customerService.findOne(this.customer.getCust_no());
-		
-		request.setAttribute("customer", customer);
+//		Customer customer = customerService.findOne(this.customer.getCust_no());
+//		
+//		request.setAttribute("customer", customer);
 		
 		request.setAttribute("flag", flag);
 		
@@ -198,5 +203,196 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		List list = customerService.findCountLevel();
 		ServletActionContext.getRequest().setAttribute("list", list);
 		return "countLevel";
+	}
+	
+	//第四 多重条件查询
+	public String multiQuery() {
+		
+		PageBean pageBean = customerService.multiQuery(customer, currentPage);
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		//放到域对象中
+		request.setAttribute("pageBean", pageBean);
+		
+		//同时还需要将用户所涉及所有的地区和等级查出来，在放到listpage页面中
+		Map<String, String> mapRegion = dictionaryService.getRegions();
+		Map<String, String> mapLevel = dictionaryService.getLevels();
+		request.setAttribute("mapRegion", mapRegion);
+		request.setAttribute("mapLevel", mapLevel);
+		
+		return "multiQuery";
+	}
+	
+	//第五 获取该客户的联系人信息
+	public String showCustLinkMan() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String cust_no = customer.getCust_no();
+		Customer customer = customerService.findOne(cust_no);
+		
+		Set<CustLinkMan> linkMans = customer.getCustLinkMans();
+		
+		request.setAttribute("customer", customer);
+		request.setAttribute("linkMans", linkMans);
+		
+		return "showCustLinkMan";
+	}
+	
+	private String link_no;
+	public String getLink_no() {
+		return link_no;
+	}
+	public void setLink_no(String link_no) {
+		this.link_no = link_no;
+	}
+
+	//第六 编辑某个联系人信息
+	public String editLinkMan() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String cust_no = customer.getCust_no();
+		
+		Customer customer = customerService.findOne(cust_no);
+		
+		CustLinkMan linkMan = customerService.findLinkMans(cust_no, link_no);
+		
+		request.setAttribute("linkMan", linkMan);
+		request.setAttribute("customer", customer);
+		
+		return "editLinkMan";
+	}
+	
+	//第七 删除联系人
+	public String deleteLinkMan() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String cust_no = customer.getCust_no();
+		
+		customerService.deleteLinkMan(cust_no, link_no);
+		
+		Customer customer = customerService.findOne(cust_no);
+		
+		Set<CustLinkMan> linkMans = customer.getCustLinkMans();
+		
+		request.setAttribute("customer", customer);
+		request.setAttribute("linkMans", linkMans);
+		
+		return "deleteLinkMan";
+	}
+	
+	//第八 新建联系人
+	public String addLinkMan() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		Customer customer = customerService.findOne(this.customer.getCust_no());
+		
+		request.setAttribute("customer", customer);
+		
+		return "addLinkMan";
+	}
+	
+	//第九 查看该客户的所有交往记录
+	public String showCommunicateRecords() {
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String cust_no = customer.getCust_no();
+		Customer customer = customerService.findOne(cust_no);
+		
+		Set<CommunicateRecord> communicateRecords = customer.getCommunicateRecords();
+		
+		request.setAttribute("customer", customer);
+		request.setAttribute("communicateRecords", communicateRecords);
+		
+		return "showCommunicateRecords";
+	}
+	
+	
+	private String comm_no;
+	public String getComm_no() {
+		return comm_no;
+	}
+	public void setComm_no(String comm_no) {
+		this.comm_no = comm_no;
+	}
+
+	public String editCommunicateRecord() {
+
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String cust_no = customer.getCust_no();
+		
+		Customer customer = customerService.findOne(cust_no);
+		
+		CommunicateRecord communicateRecord = customerService.findCommunicateRecord(cust_no, comm_no);
+		
+		request.setAttribute("communicateRecord", communicateRecord);
+		request.setAttribute("customer", customer);
+		
+		return "editCommunicateRecord";
+	}
+	
+	public String deleteCommunicateRecord() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String cust_no = customer.getCust_no();
+		
+		customerService.deleteCommunicateRecord(cust_no, comm_no);
+		
+		return "deleteCommunicateRecord";
+	}
+	
+	public String addCommunicateRecord() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		Customer customer = customerService.findOne(this.customer.getCust_no());
+		
+		request.setAttribute("customer", customer);
+		
+		return "addCommunicateRecord";
+	}
+	
+	//查看某客户的历史订单记录
+	public String showHistoryOrders() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String cust_no = customer.getCust_no();
+		Customer customer = customerService.findOne(cust_no);
+		
+		Set<Orders> orders = customer.getOrders();
+		
+		request.setAttribute("customer", customer);
+		request.setAttribute("orders", orders);
+		
+		return "showHistoryOrders";
+	}
+	private Integer orde_no;
+	public Integer getOrde_no() {
+		return orde_no;
+	}
+	public void setOrde_no(Integer orde_no) {
+		this.orde_no = orde_no;
+	}
+
+	public String showOrderDetail() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String cust_no = customer.getCust_no();
+		
+		Customer customer = customerService.findOne(cust_no);
+		
+		Orders order = customerService.findOrder(cust_no, orde_no);
+		
+		Set<OrdersLine> ordersLines = order.getOrdersLines();
+		
+		Double totalMoney = customerService.getTotalMoney(cust_no, orde_no);
+		
+		request.setAttribute("order", order);
+		request.setAttribute("customer", customer);
+		request.setAttribute("totalMoney", totalMoney);
+		request.setAttribute("ordersLines", ordersLines);
+		
+		return "showOrderDetail";
 	}
 }

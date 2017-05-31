@@ -16,7 +16,7 @@
 		<property name="lost_delay"></property>
 		<property name="lost_reson"></property>
 		<property name="lost_status"></property>
-		<many-to-one name="lost_cust_no" class="cn.crm.entity.Customer" column="lost_cust_no" lazy="false" fetch="join"></many-to-one>
+		<many-to-one name="lost_cust_no" class="cn.crm.entity.Customer" column="lost_cust_no" lazy="false" fetch="join" ></many-to-one>
 		
 	</class>
 </hibernate-mapping>

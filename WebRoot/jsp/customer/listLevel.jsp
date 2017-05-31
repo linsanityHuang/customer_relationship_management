@@ -11,7 +11,7 @@
 <body>
 	
 	<!-- 使用EL表达式获取域对象中的数据 -->
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>客户等级</td>
 			<td>数量</td>

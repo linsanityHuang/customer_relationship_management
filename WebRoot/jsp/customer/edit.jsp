@@ -6,16 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>编辑客户信息</title>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function update() {
-		var url = document.getElementById("update");
+		var url = document.getElementById("update").value;
 		window.location.href = url;
 	}
-	
-	function isUpdateSuccsee() {
-		
-	}
-</script>
+</script> -->
+<!-- <script type="text/javascript">
+	window.onload = function () {
+		var url = document.getElementById("update").value;
+		var flag = document.getElementById("flag").value;
+		if(flag != "") {
+			if(flag == true) {
+				alert("保存成功！");
+				window.location.href = url;
+			} else if (flag == false) {
+				alert("保存失败！");
+			}
+		}
+	};
+</script> -->
 </head>
 <body>
 <h1>客户信息</h1>
@@ -26,12 +36,13 @@
 <input type="button" value="返回" onclick="">
 <input type="button" value="保存" onclick="update()">
 
-	<!-- form表单可以不用 -->
-	<form action="${pageContext.request.contextPath }/customer_update.action" method="post">
-	<input type="hidden" id="update" value="${pageContext.request.contextPath }/customer_update.action">
-	
 	<!-- 获取更新结果 -->
 	<input type="hidden" id="flag" value="${flag}">
+	<input type="hidden" id="update" value="${pageContext.request.contextPath }/customer_listpage.action.action">
+	<!-- form表单可以不用 -->
+	<form action="${pageContext.request.contextPath }/customer_update.action" method="post">
+	<input type="submit" value="保存">
+
 	<!-- 设置其他信息 -->
 	<input type="hidden" name="cust_flag" value="1">
 		<table border="1px" cellpadding="10" cellspacing="1">

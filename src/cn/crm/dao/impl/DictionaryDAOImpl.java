@@ -224,4 +224,18 @@ public class DictionaryDAOImpl extends HibernateDaoSupport implements Dictionary
 		}
 		return -1;
 	}
+
+
+	@SuppressWarnings("all")
+	public Map<String, String> getLostStatus() {
+		List<BasicDictionary> list = (List<BasicDictionary>) this.getHibernateTemplate().find("from BasicDictionary where basi_flag = 1 and basi_type = '客户流失状态'");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		for (BasicDictionary basicDictionary : list) {
+			map.put(basicDictionary.getBasi_value(), basicDictionary.getBasi_item());
+		}
+		
+		return map;
+	}
 }

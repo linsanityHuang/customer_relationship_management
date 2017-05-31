@@ -6,12 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<title>新建联系人</title>
+
+
 <!-- 使用struts2的fileupload组件实现文件上传 -->
-<form action="${pageContext.request.contextPath }/linkMan_addLinkMan.action"
-method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath }/linkMan_addLinkMan.action" method="post" enctype="multipart/form-data">
 	<table>
 		<thead>添加联系人信息</thead>
 		<tbody>

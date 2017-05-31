@@ -29,7 +29,7 @@
 		<!-- 该隐藏项是为了将记录的主键值通过模型驱动的方式传递给action中的方法 -->
 		<input type="hidden" name="chan_no" value="${saleChance.chan_no}">
 		
-		<table cellpadding="10" cellspacing="0">
+		<table border="1px" cellpadding="10" cellspacing="1">
 			<tr>
 				<td style="color:black; background-color:blue; ">
 					客户名称

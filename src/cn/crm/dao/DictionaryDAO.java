@@ -41,4 +41,6 @@ public interface DictionaryDAO {
 
 	Map<String, String> getSatisfies();
 
+	Map<String, String> getLostStatus();
+
 }

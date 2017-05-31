@@ -11,7 +11,7 @@
 <body>
 
 <form action="${pageContext.request.contextPath }/visit_addVisit.action" method="post">
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<thead>添加拜访记录</thead>
 		<tbody>
 		

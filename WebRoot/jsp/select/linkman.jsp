@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/linkMan_moreCondition.action" method="post">
-		<table>
+		<table border="1px" cellpadding="10" cellspacing="1">
 			<tr>
 				<td>联系人姓名</td>
 				<td colspan="3">

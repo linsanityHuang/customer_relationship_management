@@ -13,7 +13,7 @@
 	<a>返回</a>
 	<input type="submit" value="保存">
 	<input type="hidden" name="role_id" value="${role.role_id }">
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>编号</td>
 			<td>${role.role_id }</td>

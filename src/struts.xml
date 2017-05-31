@@ -7,7 +7,76 @@
 	
 	<!-- 设置上传文件的大小 -->
 	<constant name="struts.multipart.maxSize" value="209715200"></constant>
+	
+	<package name="demo2" namespace="/" extends="jfreechart-default">
+         <action name="statisticalForm_*" class="statisticalFormAction" method="{1}">
+         
+         	<result name="contributionAnalysis">/jsp/statisticalForm/contributionAnalysis.jsp</result>
+         
+         
+            <result name="serviceAnalysis" type="chart">
+	              <param name="width">600</param>
+	              <param name="height">400</param>
+            </result>
+        </action>
+    </package>
+    
 	<package name="demo1" extends="struts-default" namespace="/">
+		
+		<action name="serviceManager_*" class="serviceManagerAction" method="{1}">
+		
+			<result name="createService">/jsp/serviceManager/createService.jsp</result>
+			
+			<result name="createService2db">/jsp/serviceManager/success.jsp</result>
+			
+			<result name="due_to_service">/jsp/serviceManager/due_to_service.jsp</result>
+			
+			<result name="duetoService">/jsp/serviceManager/success.jsp</result>
+			
+			<result name="deleteService">/jsp/serviceManager/success.jsp</result>
+			
+			<result name="handleService">/jsp/serviceManager/handleService.jsp</result>
+			
+			<result name="handlingService">/jsp/serviceManager/handlingService.jsp</result>
+			
+			<result name="handleService2db">/jsp/serviceManager/success.jsp</result>
+			
+			<result name="feedBackService">/jsp/serviceManager/feedBackService.jsp</result>
+			
+			<result name="feedBackingService">/jsp/serviceManager/feedBackingService.jsp</result>
+			
+			<result name="feedBackService2db">/jsp/serviceManager/success.jsp</result>
+			
+			<result name="fileService">/jsp/serviceManager/fileService.jsp</result>
+			
+			<result name="showFileService">/jsp/serviceManager/showFileService.jsp</result>
+		
+		</action>
+		<action name="custLost_*" class="custLostAction" method="{1}">
+			<result name="listpage">/jsp/custLost/listPage.jsp</result>
+			
+			<result name="multiQuery">/jsp/custLost/multiQueryResult.jsp</result>
+			
+			<result name="pauseLost">/jsp/custLost/pauseLost.jsp</result>
+			
+			<result name="updatePauseLost">/jsp/custLost/success.jsp</result>
+			
+			<result name="confirmLost">/jsp/custLost/confirmLost.jsp</result>
+			
+			<result name="updateConfirmLost">/jsp/custLost/success.jsp</result>
+		</action>
+		
+		
+		<action name="communicateRecord_*" class="communicateRecordAction" method="{1}">
+			
+			<result name="updateCommunicateRecord">/jsp/success.jsp</result>
+			
+			<result name="deleteCommunicateRecord">/jsp/success.jsp</result>
+			
+			<result name="addCommunicateRecord2db">/jsp/success.jsp</result>
+			
+		</action>
+		
 		
 		<action name="salePlan_*" class="salePlanAction" method="{1}">
 			<result name="showSalePlan">/jsp/salePlan/showSalePlan.jsp</result>
@@ -132,18 +201,18 @@
 			<result name="add" type="redirectAction">customer_list</result>
 		
 			<!-- 列表页面 -->
-			<result name="list">/jsp/customer/list.jsp</result>
+			<!-- <result name="list">/jsp/customer/list.jsp</result> -->
 			
 			<!-- 删除之后 -->
-			<result name="delete" type="redirectAction">customer_list</result>
+			<result name="deleteCustomer" type="redirectAction">customer_listpage</result>
 		
-			<!-- 修改-到修改页面 -->
+			<!-- 2 修改-到修改页面 -->
 			<result name="showCustomer">/jsp/customer/edit.jsp</result>
 		
-			<!-- 修改之后 -->
-			<result name="update" type="redirectAction">customer_showCustomer</result>
+			<!-- 3 修改之后 -->
+			<result name="update" type="redirectAction">customer_listpage</result>
 		
-			<!-- 分页之后要跳转的页面 -->
+			<!-- 1 分页之后要跳转的页面 -->
 			<result name="listpage">/jsp/customer/listpage.jsp</result>
 		
 			<!-- 条件查询 -->
@@ -159,6 +228,29 @@
 		
 			<!-- 根据级别统计 -->
 			<result name="countLevel">/jsp/customer/listLevel.jsp</result>
+			
+			<!-- 多重条件查询 -->
+			<result name="multiQuery">/jsp/customer/multiQueryResult.jsp</result>
+			
+			<result name="showCustLinkMan">/jsp/customer/showCustLinkMan.jsp</result>
+			
+			<!-- 跳往某个联系人的编辑页面 -->
+			<result name="editLinkMan">/jsp/linkMan/editLinkMan.jsp</result>
+			
+			<!-- deleteLinkMan -->
+			<result name="deleteLinkMan" type="redirectAction">customer_showCustLinkMan</result>
+			
+			<result name="addLinkMan">/jsp/linkMan/addLinkMan.jsp</result>
+			
+			<result name="showCommunicateRecords">/jsp/customer/showCommunicateRecords.jsp</result>
+		
+			<result name="editCommunicateRecord">/jsp/communicateRecord/editCommunicateRecord.jsp</result>
+		
+			<result name="addCommunicateRecord">/jsp/communicateRecord/addCommunicateRecord.jsp</result>
+		
+			<result name="showHistoryOrders">/jsp/customer/showHistoryOrders.jsp</result>
+			
+			<result name="showOrderDetail">/jsp/order/showOrderDetail.jsp</result>
 		</action>
 		
 		<!-- 联系人 -->
@@ -178,11 +270,15 @@
 			<result name="showLinkMan">/jsp/linkMan/edit.jsp</result>
 		
 			<result name="updateCustLinkMan" type="redirectAction">linkMan_list</result>
+			
+			<result name="updateLinkMan" type="redirectAction">customer_showCustLinkMan</result>
 		
 			<!-- 到查询联系人信息的页面 -->
 			<result name="toSelectPage">/jsp/select/linkman.jsp</result>
 		
 			<result name="moreCondition">/jsp/linkMan/list.jsp</result>
+			
+			<result name="addLinkMan2db">/jsp/linkMan/success.jsp</result>
 		</action>
 		
 		<action name="visit_*" class="visitAction" method="{1}">

@@ -6,31 +6,40 @@ import java.util.Set;
 public class Orders {
 
 	private Integer orde_no;
-	private String orde_cust_no;
+	private Customer orde_cust_no;
 	private String  orde_date;
 	private String  orde_address;
 	private Integer orde_status;
 	private Integer orde_flag;
 	
-	//一张订单可以涉及多种商品
-	private Set<Product> products = new HashSet<Product>();
+	private Set<OrdersLine> ordersLines = new HashSet<OrdersLine>();
+	public Set<OrdersLine> getOrdersLines() {
+		return ordersLines;
+	}
+	public void setOrdersLines(Set<OrdersLine> ordersLines) {
+		this.ordersLines = ordersLines;
+	}
 	
+	//一张订单可以涉及多种商品
+	/*private Set<Product> products = new HashSet<Product>();
 	public Set<Product> getProducts() {
 		return products;
 	}
 	public void setProducts(Set<Product> products) {
 		this.products = products;
-	}
+	}*/
+	
+	
 	public Integer getOrde_no() {
 		return orde_no;
 	}
 	public void setOrde_no(Integer orde_no) {
 		this.orde_no = orde_no;
 	}
-	public String getOrde_cust_no() {
+	public Customer getOrde_cust_no() {
 		return orde_cust_no;
 	}
-	public void setOrde_cust_no(String orde_cust_no) {
+	public void setOrde_cust_no(Customer orde_cust_no) {
 		this.orde_cust_no = orde_cust_no;
 	}
 	public String getOrde_date() {

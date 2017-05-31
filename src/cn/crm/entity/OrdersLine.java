@@ -5,7 +5,26 @@ public class OrdersLine {
 	private Integer line_count;
 	private String line_unit;
 	private Integer line_flag;
+	
+	
+	private Product product;
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
+	
+	private Orders orders;
+	public Orders getOrders() {
+		return orders;
+	}
+	public void setOrders(Orders orders) {
+		this.orders = orders;
+	}
+	
+	
 	public Integer getLine_no() {
 		return line_no;
 	}

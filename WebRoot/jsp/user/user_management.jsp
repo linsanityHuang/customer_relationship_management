@@ -27,7 +27,7 @@
 	<a></a>
 	<a href="${pageContext.request.contextPath}/user_add.action">新建</a>
 	<input type="submit" value="查询">
-	<table>
+	<table border="1px" cellpadding="10" cellspacing="1">
 		<tr>
 			<td>编号</td>
 			<td><input type="text" name="user_id"></td>

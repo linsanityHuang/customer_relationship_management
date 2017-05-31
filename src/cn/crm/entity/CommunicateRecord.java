@@ -73,10 +73,4 @@ public class CommunicateRecord {
 	public void setComm_flag(Integer comm_flag) {
 		this.comm_flag = comm_flag;
 	}
-
-	@Override
-	public String toString() {
-		return "CommunicateRecord [comm_no=" + comm_no + ", comm_date=" + comm_date + ", comm_address=" + comm_address + ", comm_title=" + comm_title + "]";
-	}
-
 }
