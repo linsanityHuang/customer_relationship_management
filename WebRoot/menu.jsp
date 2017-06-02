@@ -1,119 +1,168 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>客户关系管理系统</title>
-</head>
-<body>
-<table>
-	<tr>
-		<td>当前用户：</td>
-		<td>${user.user_name}(${user.sysRole.role_name})</td>
-		<td><a href="${pageContext.request.contextPath}/user_loginOut.action">退出系统</a></td>
-	</tr>
-</table>
+<HTML>
+<HEAD>
+<TITLE>客户关系管理系统</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<div>
-	<h3>营销管理</h3>
-	<ul>
-		<li>
-			<a href="${pageContext.request.contextPath }/saleChance_listpage.action?currentPage=1">销售机会管理</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">客户开发计划</a>
-		</li>
-	</ul>
-	
-	<h3>客户管理</h3>
-	<ul>
-		<li>
-			<a href="${pageContext.request.contextPath }/customer_listpage.action?currentPage=1">客户信息管理</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/custLost_listpage.action?currentPage=1">客户流失管理</a>
-		</li>
-	</ul>
-	
-	<h3>服务管理</h3>
-	<ul>
-		<li>
-			<a href="${pageContext.request.contextPath }/serviceManager_createService.action">服务创建</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/serviceManager_due_to_service.action?currentPage=1">服务分配</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/serviceManager_handleService.action?currentPage=1">服务处理</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/serviceManager_feedBackService.action?currentPage=1">服务反馈</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/serviceManager_fileService.action?currentPage=1">服务归档</a>
-		</li>
-	</ul>
-	
-	<h3>统计报表</h3>
-	<ul>
-		<li>
-			<a href="${pageContext.request.contextPath }/statisticalForm_contributionAnalysis.action?currentPage=1">客户贡献分析</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">客户构成分析</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/statisticalForm_serviceAnalysis.action?currentPage=1">客户服务分析</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/salePlan_showSalePlan.action?currentPage=1">客户流失分析</a>
-		</li>
-	</ul>
-	
-	<h3>基础数据</h3>
-	<ul>
-		<li>
-			<a href="${pageContext.request.contextPath}/dictionary_showCustLevel.action?currentPage=1">客户等级管理</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/dictionary_showServiceType.action?currentPage=1">服务类型管理</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/dictionary_showCustRegion.action?currentPage=1">客户地区管理</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/product_showProduct.action?currentPage=1">查询产品信息</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/storage_showStorage.action?currentPage=1">查询库存</a>
-		</li>
-	</ul>
-	
-	<h3>权限管理</h3>
-	<ul>
-		<li>
-			<a href="${pageContext.request.contextPath}/user_listpage.action?currentPage=1">用户管理</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/role_listpage.action?currentPage=1">角色管理</a>
-		</li>
-	</ul>
-</div>
+<!--字体大小和顏色可以改变，其余不要改变-->
+<STYLE ID="JoustStyles" TYPE="text/css">
+<!--
+.menuItem {position:absolute; visibility:hidden; left:0px;}
+.node { color: #FFF;
+font-family : "宋体";
+font-size : 13px;}
+.node A:link { color: #FFF; text-decoration: none; }
+.node A:visited { color: #FFF; text-decoration: none; }
+.node A:active { color: #005BB7; text-decoration: none; }
+.node A:hover { color: #FFF; text-decoration: none; }
+.leaf { color: #FFF;
+font-family : "宋体";
+font-size : 13px;}
+.leaf A:link { color: #FFF; text-decoration: none;}
+.leaf A:visited { color: #FFF; text-decoration: none; }
+.leaf A:active { color: #FFF; text-decoration: none; }
+.leaf A:hover { color: #FFF; text-decoration: none; }
+-->
+</STYLE>
 
 
-<%-- <a href="${pageContext.request.contextPath }/customer_toAddPage.action">新增客户</a>
-<a href="${pageContext.request.contextPath }/customer_list.action">客户列表</a>
-<a href="${pageContext.request.contextPath }/customer_listpage.action?currentPage=1">分页客户列表</a><br>
-<a href="${pageContext.request.contextPath }/linkMan_toAddPage.action">新增联系人</a>
-<a href="${pageContext.request.contextPath }/linkMan_list.action">联系人列表</a><br>
-<a href="${pageContext.request.contextPath }/visit_toAddPage.action">新增客户拜访</a>
-<a href="${pageContext.request.contextPath }/visit_list.action">客户拜访列表</a><br>
+<script language="JavaScript">
+<!--  
+var theMenuRef = "parent.theMenu";
+var theMenu = eval(theMenuRef);
+var theBrowser = parent.theBrowser;
+var belowMenu = null;
+var menuStart = 0;
 
-<a href="${pageContext.request.contextPath }/customer_toSelectCustomerPage.action">客户信息查询</a>
-<a href="${pageContext.request.contextPath }/linkMan_toSelectPage.action">联系人信息查询</a><br>
+if (parent.theBrowser) {
+if (parent.theBrowser.canOnError) {window.onerror = parent.defOnError;}
+}
 
-<a href="${pageContext.request.contextPath }/customer_countManager.action">客户经理统计</a>
-<a href="${pageContext.request.contextPath }/customer_countLevel.action">客户级别统计</a> --%>
-</body>
-</html>
+if (theMenu) {
+theMenu.amBusy = true;
+if (theBrowser.hasDHTML) {
+if (document.layers) {
+document.ids.menuTop.position = "absolute";
+document.ids.menuBottom.position = "absolute";
+document.ids.menuBottom.visibility = "hidden";
+document.ids.statusMsgDiv.position = "absolute";
+} else {
+if (document.all) {
+with (document.styleSheets["JoustStyles"]) {
+addRule ("#menuTop", "position:absolute");
+addRule ("#menuBottom", "position:absolute");
+addRule ("#menuBottom", "visibility:hidden");
+addRule ("#statusMsgDiv", "position:absolute");
+}
+}
+}
+}
+}
+function getDHTMLObj(objName) {
+return eval('document' + theBrowser.DHTMLRange + '.' + objName + theBrowser.DHTMLStyleObj);
+}
+function getDHTMLObjHeight(objName) {
+return eval('document' + theBrowser.DHTMLRange + '.' + objName + theBrowser.DHTMLDivHeight);
+}
+function getDHTMLObjTop(theObj) {return (theBrowser.code == "MSIE") ? theObj.pixelTop + 0 : theObj.top;}
+function myVoid() { ; }
+function setMenuHeight(theHeight) {
+getDHTMLObj('menuBottom').top = theHeight;
+}
+function drawStatusMsg() {
+if (document.layers) {
+document.ids.statusMsgDiv.top = menuStart;
+} else{
+if (document.all) {
+document.styleSheets["JoustStyles"].addRule ("#statusMsgDiv", "top:" + menuStart);
+}
+}
+document.writeln('<DIV ID="statusMsgDiv"><CENTER>请稍等...</CENTER></DIV>');
+}
+function drawLimitMarker() {
+var b = theBrowser;
+if (theMenu && b.hasDHTML && b.needLM) {
+var limitPos = theMenu.maxHeight + menuStart + getDHTMLObjHeight('menuBottom');
+if (b.code == 'NS') {
+document.ids.limitMarker.position = "absolute";
+document.ids.limitMarker.visibility = "hidden";
+document.ids.limitMarker.top = limitPos;
+}
+if (b.code == 'MSIE') {
+with (document.styleSheets["JoustStyles"]) {
+addRule ("#limitMarker", "position:absolute");
+addRule ("#limitMarker", "visibility:hidden");
+addRule ("#limitMarker", "top:" + limitPos + "px");
+}
+}
+document.writeln('<DIV ID="limitMarker">&nbsp;</DIV>');
+}
+}
+function setTop() {
+if (theMenu && theBrowser.hasDHTML) {
+if (getDHTMLObj('menuTop')) {
+menuStart = getDHTMLObjHeight("menuTop");
+drawStatusMsg();
+} else {
+theBrowser.hasDHTML = false;
+}
+}
+}
+function setBottom() {
+if (theMenu) {
+if (theBrowser.hasDHTML) {
+drawLimitMarker();
+getDHTMLObj("statusMsgDiv").visibility = 'hidden';
+theMenu.refreshDHTML();
+getDHTMLObj('menuBottom').visibility = 'visible';
+}
+theMenu.amBusy = false;
+}
+}
+function frameResized() {if (theBrowser.hasDHTML) {theMenu.refreshDHTML();}}
+
+// ############   End ############
+
+/*所有文件名都不要改变，否则运行可能回出现问题，因为相互引用的地方非常多。*/
+
+if (self.name != 'menu') { self.location.href = 'index2.html'; }
+//-->
+</script>
+</HEAD>
+<BODY LINK="#FFFFFF" marginwidth="1" marginheight="1" onResize="frameResized();" topmargin="0" leftmargin="0" bgcolor="#0066cc" text="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">
+<DIV ID="menuTop">&nbsp;
+</DIV>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+setTop();
+//-->
+</SCRIPT>
+
+<!--这些字体，顏色等参數应用于后面的菜單 -->
+<FONT FACE="宋体" color="#FFF">
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (theMenu) {
+parent.DrawMenu(theMenu);
+}
+//-->
+</SCRIPT>
+
+</FONT>
+
+<DIV ID="menuBottom">
+<!-- Place anything you want to appear after the menu between these DIV tags. -->
+&nbsp;
+</DIV>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+setBottom();
+//-->
+</SCRIPT>
+
+</BODY>
+</HTML>

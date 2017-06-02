@@ -59,7 +59,7 @@
 		</tbody>
 	</table>
 	<div>
-		共【<b>${pageBean.totalCount }</b>】条记录，共【<b>${pageBean.totalPage}</b>】页，当前第【<b>${pageBean.currentPage}</b>】
+		共【<b>${pageBean.totalCount}</b>】条记录，共【<b>${pageBean.totalPage}</b>】页，当前第【<b>${pageBean.currentPage}</b>】
 		
 		<c:if test="${pageBean.currentPage != 1}">
 			【<a href="${pageContext.request.contextPath }/saleChance_listpage?currentPage=${pageBean.currentPage-1 }">前一页</a>】

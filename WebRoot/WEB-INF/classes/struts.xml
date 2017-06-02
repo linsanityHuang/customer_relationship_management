@@ -5,6 +5,7 @@
 
 <struts>
 	
+	<constant name="struts.i18n.encoding" value="utf-8"/>
 	<!-- 设置上传文件的大小 -->
 	<constant name="struts.multipart.maxSize" value="209715200"></constant>
 	
@@ -157,7 +158,7 @@
 			<result name="input">/jsp/error.jsp</result>
 			
 			<!-- 登录 -->
-			<result name="success">/menu.jsp</result>
+			<result name="success">/myself/menu.jsp</result>
 			<result name="failed">/login.jsp</result>
 			
 			<!-- 退出系统 -->
@@ -213,7 +214,7 @@
 			<result name="update" type="redirectAction">customer_listpage</result>
 		
 			<!-- 1 分页之后要跳转的页面 -->
-			<result name="listpage">/jsp/customer/listpage.jsp</result>
+			<result name="listpage">/~sale/list.jsp</result>
 		
 			<!-- 条件查询 -->
 			<result name="listcondition">/jsp/customer/list.jsp</result>
@@ -293,7 +294,7 @@
 		<action name="saleChance_*" class="saleChanceAction" method="{1}">
 		
 			<!-- 跳往分页显示页面 -->
-			<result name="listpage">/jsp/saleChance/listpage.jsp</result>
+			<result name="listpage">/~sale/list.jsp</result>
 			
 			<!-- 删除成功之后跳往分页显示页面 -->
 			<result name="deleteSuccsess" type="redirectAction">saleChance_listpage</result>
@@ -310,7 +311,8 @@
 			<result name="input">/jsp/error.jsp</result>
 			
 			<!-- 跳转至新建页面 -->
-			<result name="toAddPage">/jsp/saleChance/add.jsp</result>
+			<result name="toAddPage">/~sale/add.jsp</result>
+<!-- 			<result name="toAddPage">/jsp/saleChance/add.jsp</result> -->
 			
 			<!-- 新建完毕后，跳转至分页显示页面 -->
 			<result name="add" type="redirectAction">saleChance_listpage</result>
